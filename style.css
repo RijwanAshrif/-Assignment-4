@@ -34,10 +34,12 @@ nav ul li a{
     padding: 10px;
     text-transform: uppercase;
     margin-left: 30px;
+    text-decoration: none;
 }
 nav ul li a:hover, a.active{
     background-color: #E33741;
     border-radius: 5px;
+    color: white;
 }
 .main-content{
     display: grid;
@@ -105,6 +107,7 @@ nav ul li a:hover, a.active{
     word-spacing: 20px;
     border: none;
     border-radius: 5px;
+    padding-bottom: 50px;
     height: 40px;
     width: 40px;
 
@@ -146,10 +149,10 @@ nav ul li a:hover, a.active{
     height: 40px;
     width: 100px;
 }
-.increase-color{
+.increase-btn-color{
     background-color: green;
 }
-.decrease-color{
+.decrease-btn-color{
     background-color: #E33741;
 }
 .table-area{
@@ -158,4 +161,10 @@ nav ul li a:hover, a.active{
     font-size: 25px;
     border-radius: 5px;
     width: 50pc;
+}
+#greeting{
+    display: none;
+    color: white;
+    text-align: center;
+    padding-top: 610px;
 }
