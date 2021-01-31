@@ -160,7 +160,9 @@ nav ul li a:hover, a.active{
     background-color: grey;
     font-size: 25px;
     border-radius: 5px;
-    width: 50pc;
+    width: 40pc;
+    
+    
 }
 #greeting{
     display: none;

@@ -42,7 +42,7 @@
             <h3>Book Ocean Time</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
@@ -114,31 +114,29 @@
     </main>
     </div>
 
+     <!-- Confirmation Area -->
+     
     <div align="center" id="confirmation">
         <h1>Congratulations!!!</h1>
         <br>
         <h3>Your ticket purchased</h3>
         <br>
-        <table class="table-area" border="1">
+        <table class="table-area">
             <tr>
                 <th>Ticket Name</th>
-                <th>Total Pieces</th>
-                <th>Total Price</th>
+                <th></th>
             </tr>
             <tr>
                 <td>First - Class :</td>
-                <td><span id="firstClassPieces"></span>Pieces</td>
-                <td>$ <span id="firstClassPrice"></span>Price</td>
+                <td><span id="firstClassPrice">0</span> Tickets</td>
             </tr>
             <tr>
                 <td>Economy :</td>
-                <td><span id="economyPieces">0</span>Pieces</td>
-                <td>$ <span id="economyPrice">0</span>Price</td>
+                <td><span id="economyPrice">0</span> Tickets</td>
             </tr>
             <tr>
-                <td>Total :</td>
-                <td><span id="totalPieces">0</span>Pieces</td>
-                <td>$ <span id="totalPrice">0</span>(With 10% Vat)</td>
+                <td>Total (With 10% Vat) :</td>
+                <td><span id="totalPrice">0</span></td>
             </tr>
         </table>
         <br>
@@ -148,7 +146,8 @@
     <div id="greeting">
         <h1>Thanks for your order sir. See you again!</h1>
     </div>
-
+      
+    <!-- JavaScript Code -->
      <script>
         function ticketCount(product, isIncrease){
             const ticketInput = document.getElementById(product + '-ticket');
@@ -180,34 +179,16 @@
         document.getElementById('totalPayment').innerText = '$' + totalPayment;
         }
 
-        function bookNow(){
-            const details = document.getElementById('details');
-            details.style.display = "none";
-            let confirmation = document.getElementById('confirmation');
-            confirmation.style.display = "block";
+        const bookingNowBtn = document.getElementById("book-now");
+        bookingNowBtn.addEventListener("click", function(){
+            document.getElementById('firstClassPrice').innerText = document.getElementById('firstClass-ticket').value;
+            document.getElementById('economyPrice').innerText = document.getElementById('economy-ticket').value;
+            document.getElementById('totalPrice').innerText = document.getElementById('vat').innerText;
+            document.getElementById('totalPrice').innerText = document.getElementById('total-price').innerText;
+            document.getElementById('totalPrice').innerText = document.getElementById('totalPayment').innerText;            
 
-            const firstClassCount = ticketInput('firstClass');
-            const economyCount = ticketInput('economy');
-
-            const firstClassPieces = document.getElementById('firstClassPieces').value;
-            firstClassPieces.innerText= firstClassCount;
-            const economyPieces = document.getElementById('economyPieces').value;
-            economyPieces.innerText= economyCount;
-
-            const totalPieces = document.getElementById('totalPieces');
-            totalPieces.innerText = firstClassCount + economyCount;
-
-            const firstClassPrice = document.getElementById('firstClassPrice');
-            firstClassPrice.innerText = firstClassCount * 150;
-
-            const economyPrice = document.getElementById('economyPrice');
-            economyPrice.innerText = economyCount * 100;
-
-            const total = document.getElementById('totalPrice');
-            const totalPrice = firstClassCount * 150 + economyCount * 100;
-            const totalPriceWithTax = totalPrice * 0.10;
-            total.innerText = totalPrice + totalPriceWithTax;
-        }
+            
+        })
 
             const bookNowBtn = document.getElementById("book-now");
             bookNowBtn.addEventListener("click", function(){
