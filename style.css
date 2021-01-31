@@ -8,6 +8,7 @@
 body{
     font-family: 'Roboto', sans-serif;
     background:url("images/ship.png");
+    padding-top: 9px;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
@@ -97,13 +98,16 @@ nav ul li a:hover, a.active{
     min-width: 300px;
 }
 .plus-minus-btn button{
-    color: #3352F2;
+    color: white;
     font-size: 30px;
     padding: 2px;
     margin: 10px 5px 0px 0px;
     word-spacing: 20px;
     border: none;
-    background-color: white;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+
 }
 .booking-form .inputs{
     display: grid;
@@ -123,4 +127,35 @@ nav ul li a:hover, a.active{
 .amount{
     display: flex;
     justify-content: space-between;
+}
+#confirmation{
+    display: none;
+    color: white;
+    font-size: 30px;
+    padding-top: 260px;
+}
+.submit{
+    color: white;
+    font-size: 20px;
+    padding: 2px;
+    margin: 10px 5px 0px 0px;
+    word-spacing: 20px;
+    border: none;
+    background-color: #E33741;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+}
+.increase-color{
+    background-color: green;
+}
+.decrease-color{
+    background-color: #E33741;
+}
+.table-area{
+    border: 2px solid white;
+    background-color: grey;
+    font-size: 25px;
+    border-radius: 5px;
+    width: 50pc;
 }

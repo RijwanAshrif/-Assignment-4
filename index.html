@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curise Booking</title>
+    <title>Cruise Booking</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
@@ -14,7 +14,8 @@
 </head>
 
 <body>
-    <!--Header and Menu Section-->
+    <div id="content-area">
+            <!--Header and Menu Section-->
     <header class="container">
         <nav>
             <ul>
@@ -31,7 +32,8 @@
 
         <div class="booking-content">
             <h1>Cruise Queen</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>Part of the appeal of cruising is that there's truly something for everyone. Ships come in an array of sizes, some loaded with so many activities, you couldn't get to them all in a week.
+            Families will find plenty of options and activities onboard big ships, which have transformed cruising, making the vessels as exciting as the destinations to which they sail.</p>
         </div>
 
 
@@ -61,8 +63,8 @@
                     <input id="firstClass-ticket" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="ticketCount('firstClass', true);" id="case-increase">+</button>
-                    <button onclick="ticketCount('firstClass', false);" id="case-decrease">-</button>
+                    <button onclick="ticketCount('firstClass', true);" id="case-increase" class="increase-color">+</button>
+                    <button onclick="ticketCount('firstClass', false);" id="case-decrease" class="decrease-color">-</button>
                 </div>
             </div>
             
@@ -72,8 +74,8 @@
                     <input id="economy-ticket" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="ticketCount('economy', true);" id="case-increase">+</button>
-                    <button onclick="ticketCount('economy', false);" id="case-decrease">-</button>
+                    <button onclick="ticketCount('economy', true);" id="case-increase" class="increase-color">+</button>
+                    <button onclick="ticketCount('economy', false);" id="case-decrease" class="decrease-color">-</button>
                 </div>
             </div>
             <div class="calculations">
@@ -104,9 +106,42 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-now" onclick="bookNow()" class="btn-style">Book Now</button>
         </div>
     </main>
+    </div>
+
+    <div align="center" id="confirmation">
+        <h1>Congratulations!!!</h1>
+        <br>
+        <h3>Your ticket purchased</h3>
+        <br>
+        <table class="table-area" border="1">
+            <tr>
+                <th>Ticket Name</th>
+                <th>Total Pieces</th>
+                <th>Total Price</th>
+            </tr>
+            <tr>
+                <td>First - Class :</td>
+                <td><span id="firstClassPieces"></span>Pieces</td>
+                <td>$ <span id="firstClassPrice"></span>Price</td>
+            </tr>
+            <tr>
+                <td>Economy :</td>
+                <td><span id="economyPieces">0</span>Pieces</td>
+                <td>$ <span id="economyPrice">0</span>Price</td>
+            </tr>
+            <tr>
+                <td>Total :</td>
+                <td><span id="totalPieces">0</span>Pieces</td>
+                <td>$ <span id="totalPrice">0</span>(With 10% Vat)</td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit" class="submit"><a href=""></a>Submit</button>
+    </div>
+
      <script>
         function ticketCount(product, isIncrease){
             const ticketInput = document.getElementById(product + '-ticket');
@@ -137,6 +172,44 @@
             const totalPayment = totalPriceVat + totalTicketPrice;
         document.getElementById('totalPayment').innerText = '$' + totalPayment;
         }
+
+        function bookNow(){
+            const details = document.getElementById('details');
+            details.style.display = "none";
+            let confirmation = document.getElementById('confirmation');
+            confirmation.style.display = "block";
+
+            const firstClassCount = ticketInput('firstClass');
+            const economyCount = ticketInput('economy');
+
+            const firstClassPieces = document.getElementById('firstClassPieces').value;
+            firstClassPieces.innerText= firstClassCount;
+            const economyPieces = document.getElementById('economyPieces').value;
+            economyPieces.innerText= economyCount;
+
+            const totalPieces = document.getElementById('totalPieces');
+            totalPieces.innerText = firstClassCount + economyCount;
+
+            const firstClassPrice = document.getElementById('firstClassPrice');
+            firstClassPrice.innerText = firstClassCount * 150;
+
+            const economyPrice = document.getElementById('economyPrice');
+            economyPrice.innerText = economyCount * 100;
+
+            const total = document.getElementById('totalPrice');
+            const totalPrice = firstClassCount * 150 + economyCount * 100;
+            const totalPriceWithTax = totalPrice * 0.10;
+            total.innerText = totalPrice + totalPriceWithTax;
+        }
+
+            const bookNowBtn = document.getElementById("book-now");
+            bookNowBtn.addEventListener("click", function(){
+                const contentArea = document.getElementById("content-area");
+                contentArea.style.display = "none";
+                const confirmationArea = document.getElementById("confirmation");
+                confirmationArea.style.display = "block";
+            })
+
 
      </script>
 
